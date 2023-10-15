@@ -1,4 +1,4 @@
-package com.example.authtest;
+package com.example.authtest.auth;
 
 import java.io.Serial;
 import java.util.Collection;
@@ -9,8 +9,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonDeserialize(as = MyUserDetails.class)
-public class MyUserDetails implements UserDetails {
+@JsonDeserialize(as = DefaultUserDetails.class)
+public class DefaultUserDetails implements UserDetails {
 	@Serial
 	private static final long serialVersionUID = 1L;
 	private boolean accountNonExpired = true;

@@ -1,0 +1,26 @@
+PKCE Generator:
+https://developer.pingidentity.com/en/tools/pkce-code-generator.html
+
+### Open in browser and login
+http://localhost:9009/oauth2/authorize?
+    response_type=code
+    &client_id=messaging-client
+    &scope=openid
+    &redirect_uri=http://localhost:8080
+    &code_challenge=t3RzPLjc8NiO_mpmIuTJYi2P6Ps8y9jP6cphOhSNozw
+    &code_challenge_method=S256
+
+### GET Token -> Replace code from first call
+POST http://localhost:9009/oauth2/token?client_id=messaging-client
+    &redirect_uri=http://localhost:8080
+    &grant_type=authorization_code
+    &scope=openid
+    &code=vuQU-CV2pTgRud8tJpBwehskC4Ef5FXemRyh6oiW0gzgiyx6ka-o5SiFvw_e_crnwtgpIpknJFc7MgLfizAgIbiCJma5onH5J6Bj3NRcChtjya5nWiA13UMIrRGhnct-
+    &code_verifier=mlZDBO_BNru6SRVHWhhAMJIsVCAdVZAL8VRTpy8hXBzcOJ92gKHtXPI3Agb0FF-l5NtYIbAcrl7bsHqSVJNDVWa0sjSoe0RvdwNy4Yz6StaQ-vd7uU0IRg-1tshE19PA
+
+> {%
+    client.global.set("AUTH_TOKEN",response.body.access_token);
+    client.global.set("ID_TOKEN",response.body.id_token);
+%}
+
+

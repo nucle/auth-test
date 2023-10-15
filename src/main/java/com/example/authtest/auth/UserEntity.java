@@ -1,17 +1,20 @@
-package com.example.authtest;
+package com.example.authtest.auth;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "myuser")
-public class MyUser {
+public class UserEntity {
 	@Id
 	private String id;
 	private String username;
 	private String password;
+	@Column(name = "firstname")
 	private String firstName;
+	@Column(name = "lastname")
 	private String lastName;
 	private String role;
 
